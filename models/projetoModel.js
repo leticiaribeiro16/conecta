@@ -28,8 +28,17 @@ const Projeto = sequelize.define(
     },
   },
   {
+    tableName: 'projetos',
     timestamps: false,
   }
 );
+
+Projeto.sync()
+  .then(() => {
+    console.log('Modelo sincronizado com o banco de dados');
+  })
+  .catch((error) => {
+    console.error('Erro ao sincronizar o modelo com o banco de dados:', error);
+  });
 
 module.exports = Projeto;
